@@ -15,7 +15,12 @@ export class ClientesComponent implements OnInit {
 
    }
   ngOnInit() {
-    this.clientes=this.clienteService.getClientes();
+    //getClientes es un observable, va aser observado por observadores.
+    this.clienteService.getClientes().subscribe(
+      //función anónima de Ts
+      //argumentos:pasamos los clientes que es el resultado del stream
+      clientes => this.clientes=clientes
+    );
   }
 
 }
